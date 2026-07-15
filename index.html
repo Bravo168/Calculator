@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Calculator</title>
+<meta name="description" content="Kalkulator sederhana, bisa diinstall dan dipakai offline." />
+<meta name="theme-color" content="#111827" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="calculator" id="calculator">
+  <div class="toolbar">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ganti tema"></button>
+  </div>
+  <div class="display">
+    <div class="display-expression" id="expression"></div>
+    <div class="display-current" id="current">0</div>
+  </div>
+  <div class="keys">
+    <button class="key key-fn" data-action="clear">AC</button>
+    <button class="key key-fn" data-action="negate">+/-</button>
+    <button class="key key-fn" data-action="percent">%</button>
+    <button class="key key-op" data-op="÷">÷</button>
+
+    <button class="key" data-digit="7">7</button>
+    <button class="key" data-digit="8">8</button>
+    <button class="key" data-digit="9">9</button>
+    <button class="key key-op" data-op="×">×</button>
+
+    <button class="key" data-digit="4">4</button>
+    <button class="key" data-digit="5">5</button>
+    <button class="key" data-digit="6">6</button>
+    <button class="key key-op" data-op="−">−</button>
+
+    <button class="key" data-digit="1">1</button>
+    <button class="key" data-digit="2">2</button>
+    <button class="key" data-digit="3">3</button>
+    <button class="key key-op" data-op="+">+</button>
+
+    <button class="key key-zero" data-digit="0">0</button>
+    <button class="key" data-action="decimal">,</button>
+    <button class="key key-op key-equals" data-action="equals">=</button>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
