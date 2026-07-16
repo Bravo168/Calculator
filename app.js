@@ -245,10 +245,38 @@ installBannerCloseEl.addEventListener("click", hideInstallBanner);
 window.addEventListener("appinstalled", hideInstallBanner);
 
 if ("serviceWorker" in navigator) {
+  const updateBannerEl = document.getElementById("updateBanner");
+  let waitingWorker = null;
+
+  function showUpdateBanner(worker) {
+    waitingWorker = worker;
+    updateBannerEl.hidden = false;
+  }
+
+  updateBannerEl.addEventListener("click", () => {
+    if (!waitingWorker) return;
+    waitingWorker.postMessage({ type: "SKIP_WAITING" });
+    updateBannerEl.hidden = true;
+  });
+
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("service-worker.js", { updateViaCache: "none" })
-      .then((reg) => reg.update())
+      .then((reg) => {
+        if (reg.waiting && navigator.serviceWorker.controller) {
+          showUpdateBanner(reg.waiting);
+        }
+        reg.addEventListener("updatefound", () => {
+          const newWorker = reg.installing;
+          if (!newWorker) return;
+          newWorker.addEventListener("statechange", () => {
+            if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+              showUpdateBanner(newWorker);
+            }
+          });
+        });
+        reg.update();
+      })
       .catch(() => {});
   });
 

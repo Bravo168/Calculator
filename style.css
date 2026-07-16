@@ -144,6 +144,26 @@ body {
   cursor: pointer;
 }
 
+.update-banner {
+  position: fixed;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  right: 16px;
+  z-index: 100;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: #f59e0b;
+  color: #111827;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.update-banner[hidden] {
+  display: none;
+}
+
 .calculator {
   width: 100%;
   max-width: 360px;
