@@ -210,7 +210,6 @@ render();
 const installBannerEl = document.getElementById("installBanner");
 const installBtnEl = document.getElementById("installBtn");
 const installBannerCloseEl = document.getElementById("installBannerClose");
-const INSTALL_DISMISSED_KEY = "calculator-install-dismissed";
 
 let deferredInstallPrompt = null;
 
@@ -219,7 +218,7 @@ function isStandalone() {
 }
 
 function showInstallBanner() {
-  if (isStandalone() || sessionStorage.getItem(INSTALL_DISMISSED_KEY)) return;
+  if (isStandalone()) return;
   installBannerEl.hidden = false;
 }
 
@@ -241,10 +240,7 @@ installBtnEl.addEventListener("click", async () => {
   deferredInstallPrompt = null;
 });
 
-installBannerCloseEl.addEventListener("click", () => {
-  sessionStorage.setItem(INSTALL_DISMISSED_KEY, "1");
-  hideInstallBanner();
-});
+installBannerCloseEl.addEventListener("click", hideInstallBanner);
 
 window.addEventListener("appinstalled", hideInstallBanner);
 
