@@ -92,6 +92,58 @@ body {
   transition: background 0.2s ease;
 }
 
+.install-banner {
+  position: fixed;
+  top: calc(16px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 32px);
+  padding: 10px 12px 10px 16px;
+  background: rgba(17, 24, 39, 0.92);
+  backdrop-filter: blur(8px);
+  color: #f9fafb;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  font-size: 0.85rem;
+}
+
+.install-banner[hidden] {
+  display: none;
+}
+
+.install-banner-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.install-banner-btn {
+  flex-shrink: 0;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: #f59e0b;
+  color: #111827;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.install-banner-close {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 4px;
+  cursor: pointer;
+}
+
 .calculator {
   width: 100%;
   max-width: 360px;

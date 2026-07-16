@@ -207,6 +207,47 @@ window.addEventListener("keydown", (event) => {
 
 render();
 
+const installBannerEl = document.getElementById("installBanner");
+const installBtnEl = document.getElementById("installBtn");
+const installBannerCloseEl = document.getElementById("installBannerClose");
+const INSTALL_DISMISSED_KEY = "calculator-install-dismissed";
+
+let deferredInstallPrompt = null;
+
+function isStandalone() {
+  return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+}
+
+function showInstallBanner() {
+  if (isStandalone() || sessionStorage.getItem(INSTALL_DISMISSED_KEY)) return;
+  installBannerEl.hidden = false;
+}
+
+function hideInstallBanner() {
+  installBannerEl.hidden = true;
+}
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  showInstallBanner();
+});
+
+installBtnEl.addEventListener("click", async () => {
+  hideInstallBanner();
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+});
+
+installBannerCloseEl.addEventListener("click", () => {
+  sessionStorage.setItem(INSTALL_DISMISSED_KEY, "1");
+  hideInstallBanner();
+});
+
+window.addEventListener("appinstalled", hideInstallBanner);
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
