@@ -17,12 +17,13 @@ service worker). Tidak ada build step; murni HTML/CSS/JS statis.
 
 ## Tema
 
-Tombol 🌙/☀️/🖥️ di kanan atas kalkulator mengganti tema, tersimpan di `localStorage` jadi tetap
+Tombol 🌙/☀️/🖥️/🌈 di kanan atas kalkulator mengganti tema, tersimpan di `localStorage` jadi tetap
 dipakai saat dibuka lagi:
 
 - 🌙 **Dark** (default) — abu-abu gelap, aksen amber
 - ☀️ **Light** — putih bersih, aksen biru
 - 🖥️ **Retro** — LCD hijau phosphor ala kalkulator jadul
+- 🌈 **Neon** — cyberpunk ungu-hitam, aksen pink/cyan menyala
 
 Tema didefinisikan sebagai CSS custom properties di `style.css` lewat atribut `data-theme` pada
 `<html>`. Untuk menambah tema baru, tambahkan blok `[data-theme="nama"] { --var: ...; }` dan daftarkan

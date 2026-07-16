@@ -80,6 +80,30 @@ html, body {
   --toggle-hover-bg: rgba(80, 255, 140, 0.1);
 }
 
+[data-theme="neon"] {
+  --page-bg: #0a0014;
+  --calc-bg: #16092b;
+  --calc-border: rgba(255, 0, 200, 0.15);
+  --calc-shadow: 0 20px 50px rgba(255, 0, 200, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  --display-bg: linear-gradient(180deg, #0d0018 0%, #150025 100%);
+  --display-border: rgba(0, 240, 255, 0.2);
+  --display-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 0, 200, 0.05),
+    0 1px 0 rgba(0, 240, 255, 0.05);
+  --expr-color: #8a5cf6;
+  --current-color: #00f0ff;
+  --current-glow: rgba(0, 240, 255, 0.45);
+
+  --key-bg: #251140;
+  --key-color: #f0d9ff;
+  --key-fn-bg: #3d2459;
+  --key-fn-color: #ffd9fb;
+  --key-op-bg: #ff2ec4;
+  --key-op-color: #14001a;
+  --toggle-color: #c084fc;
+  --toggle-hover-bg: rgba(255, 0, 200, 0.12);
+}
+
 body {
   display: flex;
   align-items: center;

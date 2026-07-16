@@ -3,8 +3,8 @@ const currentEl = document.getElementById("current");
 const keysEl = document.querySelector(".keys");
 const themeToggleEl = document.getElementById("themeToggle");
 
-const THEMES = ["dark", "light", "retro"];
-const THEME_ICONS = { dark: "🌙", light: "☀️", retro: "🖥️" };
+const THEMES = ["dark", "light", "retro", "neon"];
+const THEME_ICONS = { dark: "🌙", light: "☀️", retro: "🖥️", neon: "🌈" };
 const THEME_STORAGE_KEY = "calculator-theme";
 
 function applyTheme(theme) {
