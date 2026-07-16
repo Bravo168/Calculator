@@ -204,12 +204,13 @@ body {
   border: none;
   border-radius: 999px;
   padding: 10px 16px;
-  background: #f59e0b;
-  color: #111827;
+  background: var(--key-op-bg);
+  color: var(--key-op-color);
   font-size: 0.85rem;
   font-weight: 600;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .update-banner[hidden] {
