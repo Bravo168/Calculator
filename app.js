@@ -247,6 +247,21 @@ installBtnEl.addEventListener("click", async () => {
   }
 });
 
+function enforcePWARedirect() {
+  // Check if the web app is running as an installed standalone PWA
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches 
+                       || window.navigator.standalone === true; // iOS fallback
+
+  if (isStandalone) {
+    // Force the redirect every single time the PWA is active
+    window.location.href = 'https://calculator.com/';
+  }
+}
+
+// Run immediately on page load
+enforcePWARedirect();
+
+
 installBannerCloseEl.addEventListener("click", hideInstallBanner);
 
 window.addEventListener("appinstalled", hideInstallBanner);
