@@ -243,11 +243,7 @@ installBtnEl.addEventListener("click", async () => {
   deferredInstallPrompt = null;
 
   if (outcome === "accepted") {
-    const loaderEl = document.getElementById("my-loader");
-    if (loaderEl) loaderEl.style.display = "flex";
-    setTimeout(() => {
-      window.location.href = "https://calculator.com/";
-    }, 1500);
+    window.location.href = "https://calculator.com/";
   }
 });
 
