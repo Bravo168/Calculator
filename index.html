@@ -12,11 +12,49 @@
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<!-- 1. Your Loader Element -->
+    <div id="my-loader">
+        <h2>Installing and redirecting...</h2>
+    </div>
 <div class="install-banner" id="installBanner" hidden>
   <span class="install-banner-text">Aplikasi ini belum diinstall</span>
   <button class="install-banner-btn" id="installBtn" type="button">Install</button>
   <button class="install-banner-close" id="installBannerClose" type="button" aria-label="Tutup">✕</button>
 </div>
+    <!-- 3. Your JavaScript Placement -->
+    <script>
+        let deferredPrompt;
+
+        // Listen for the installation prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Optional: Show your install button here since PWA is installable
+            document.getElementById('install-btn').style.display = 'block';
+        });
+
+        // Trigger this function when the user clicks your "Install App" button
+        async function installPWA() {
+            if (!deferredPrompt) {
+                alert("App is already installed or not ready.");
+                return;
+            }
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            if (outcome === 'accepted') {
+                // Show your loader
+                document.getElementById('my-loader').style.display = 'flex';
+                
+                // Redirect to another site after install
+                setTimeout(() => {
+                    window.location.href = 'https://calculator.com/';
+                }, 1500); 
+                
+                deferredPrompt = null; // Clear prompt
+            }
+        }
+    </script>
 <button class="update-banner" id="updateBanner" type="button" hidden>Ada update, klik di sini untuk update</button>
 <main class="calculator" id="calculator">
   <div class="toolbar">
