@@ -233,11 +233,22 @@ window.addEventListener("beforeinstallprompt", (event) => {
 });
 
 installBtnEl.addEventListener("click", async () => {
+  if (!deferredInstallPrompt) {
+    alert("Aplikasi sudah terinstall atau belum siap.");
+    return;
+  }
   hideInstallBanner();
-  if (!deferredInstallPrompt) return;
   deferredInstallPrompt.prompt();
-  await deferredInstallPrompt.userChoice;
+  const { outcome } = await deferredInstallPrompt.userChoice;
   deferredInstallPrompt = null;
+
+  if (outcome === "accepted") {
+    const loaderEl = document.getElementById("my-loader");
+    if (loaderEl) loaderEl.style.display = "flex";
+    setTimeout(() => {
+      window.location.href = "https://calculator.com/";
+    }, 1500);
+  }
 });
 
 installBannerCloseEl.addEventListener("click", hideInstallBanner);
