@@ -1,4 +1,4 @@
-const CACHE_NAME = "calculator-v15";
+const CACHE_NAME = "calculator-v22";
 const ASSETS = [
   "./",
   "./index.html",
@@ -7,6 +7,7 @@ const ASSETS = [
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
+  "./media/fab-icon.gif",
 ];
 
 self.addEventListener("install", (event) => {

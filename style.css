@@ -200,7 +200,7 @@ body {
 
 .update-banner {
   position: fixed;
-  bottom: calc(16px + env(safe-area-inset-bottom));
+  bottom: calc(92px + env(safe-area-inset-bottom));
   right: 16px;
   z-index: 100;
   border: none;
@@ -217,6 +217,31 @@ body {
 
 .update-banner[hidden] {
   display: none;
+}
+
+.fab {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  right: 20px;
+  z-index: 100;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.1s ease;
+}
+
+.fab-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.fab:active {
+  transform: scale(0.95);
 }
 
 .calculator {
